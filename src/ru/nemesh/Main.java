@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
         Scanner scanner = new Scanner(System.in);
-        String input = null;  
+        String input = null;
         String keyapi = "125633555856622";
         String result = null;
 
