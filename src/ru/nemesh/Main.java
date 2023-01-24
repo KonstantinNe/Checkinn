@@ -18,13 +18,13 @@ public class Main {
         button.addActionListener(actionListener);
         input = scanner.nextLine();
 //        try {
-            input = String.valueOf(Check.getHownum(input));
+        input = String.valueOf(Check.getHownum(input));
 //
 //        } catch (NumException e) {
 //            System.out.println(e.getMessage());
            // continue;
         //}
       result = String.valueOf((Senda.checkOrg(input,keyapi)));
-        System.out.println("Информация по организации");
+        System.out.println("Информация по организации" + result);
     }
 }

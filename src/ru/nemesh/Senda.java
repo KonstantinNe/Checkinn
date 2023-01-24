@@ -11,13 +11,14 @@ import com.sun.net.httpserver.HttpServer;
 
 class Senda {
 
-    public static int checkOrg (String input,String keyapi) throws IOException {
+    public static int checkOrg (String reg,String key) throws IOException {
         URL url = new URL("https://api-fns.ru/api/egr");    //Создаем объект URL с путем к странице
         URLConnection connection = url.openConnection();   //  Создаем двустороннее соединение
 
 // получили поток для отправки данных
         OutputStream output = connection.getOutputStream();   //Получаем поток вывода
-        output.write(1); // отправляем данные               //Выводим в него данные
+        output.write(Integer.parseInt(reg)); // отправляем данные               //Выводим в него данные
+        output.write(Integer.parseInt(key)); // отправляем данные               //Выводим в него данные
 
 // получили поток для чтения данных
         InputStream input = connection.getInputStream();       //Получаем поток ввода
@@ -40,7 +41,8 @@ class Senda {
         /// API: Метод egr
         /// поле 1  req *
         /// поле 2  key *
-        return serverPort;
+        //return serverPort;
+        return data;
     }
 }
 
