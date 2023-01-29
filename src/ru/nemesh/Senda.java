@@ -30,7 +30,7 @@ class Senda {
 
 // получили поток для чтения данных
         InputStream input = connection.getInputStream();       //Получаем поток ввода
-        int data = input.read(); // читаем данные               // Читаем из него данные
+        int data = input.read(); // читаем данные                // Читаем из него данные
 
 //        int serverPort = 8000;
 //        HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
