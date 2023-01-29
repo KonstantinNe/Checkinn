@@ -21,7 +21,7 @@ class Senda {
         Stream stream = list.stream();
 
         URL url = new URL("https://api-fns.ru/api/egr");    //Создаем объект URL с путем к странице
-        URLConnection connection = url.openConnection();   //  Создаем двустороннее соединение
+        URLConnection connection = url.openConnection();   //  Создаем двустороннее соединение  
 
 // получили поток для отправки данных
 //        OutputStream output = connection.getOutputStream();   //Получаем поток вывода
