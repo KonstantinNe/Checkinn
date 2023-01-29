@@ -6,6 +6,8 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.* ;
 
 import com.sun.net.httpserver.HttpServer;
@@ -13,6 +15,11 @@ import com.sun.net.httpserver.HttpServer;
 class Senda {
 
     public static int checkOrg (String reg,String key) throws IOException {
+        List<String> list = new ArrayList<String>();
+        list.add("reg");
+        list.add("key");
+        Stream stream = list.stream();
+
         URL url = new URL("https://api-fns.ru/api/egr");    //Создаем объект URL с путем к странице
         URLConnection connection = url.openConnection();   //  Создаем двустороннее соединение
 
