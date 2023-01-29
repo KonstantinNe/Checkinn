@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.stream.* ;
 
 import com.sun.net.httpserver.HttpServer;
 
@@ -16,9 +17,9 @@ class Senda {
         URLConnection connection = url.openConnection();   //  Создаем двустороннее соединение
 
 // получили поток для отправки данных
-        OutputStream output = connection.getOutputStream();   //Получаем поток вывода
-        output.write(Integer.parseInt(reg)); // отправляем данные               //Выводим в него данные
-        output.write(Integer.parseInt(key)); // отправляем данные               //Выводим в него данные
+//        OutputStream output = connection.getOutputStream();   //Получаем поток вывода
+//        output.write(Integer.parseInt(reg)); // отправляем данные               //Выводим в него данные
+//        output.write(Integer.parseInt(key)); // отправляем данные               //Выводим в него данные
 
 // получили поток для чтения данных
         InputStream input = connection.getInputStream();       //Получаем поток ввода

@@ -10,20 +10,36 @@ public class Main {
         System.out.println("Введите ИНН");
         Scanner scanner = new Scanner(System.in);
         String input = null;   
-        String keyapi = "125633555856622";
+        String keyapi = "***00c8bab8";
         String result = null;
 
         JButton button = new JButton("Найти");
         ActionListener actionListener = new ToActionListener();
         button.addActionListener(actionListener);
+        
         input = scanner.nextLine();
+
 //        try {
-        input = String.valueOf(Check.getHownum(input));
-//
-//        } catch (NumException e) {
-//            System.out.println(e.getMessage());
-           // continue;
-        //}
+//        input = String.valueOf(Check.getNum(input));
+////        } catch (NumException e) {
+////            System.out.println(e.getMessage());
+//        }
+        
+        try {
+            input = Check.getProbel(input);
+
+        } catch (ProbelException e) {
+            System.out.println(e.getMessage());
+            //   continue;
+        }
+
+        String[] mas = input.split("");  //  делим массив строку на части по символам для проверки количсетва введеных чисел (10) и наличия всех чисел, без симоволов
+        try {
+            input = Check.getHownum(input);
+        } catch (NullnumException e) {
+            System.out.println(e.getMessage());
+          //  continue;
+        }
       result = String.valueOf((Senda.checkOrg(input,keyapi)));
         System.out.println("Информация по организации" + result);
     }
