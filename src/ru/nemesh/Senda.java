@@ -2,35 +2,37 @@ package ru.nemesh;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.InetSocketAddress;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.* ;
-
-import com.sun.net.httpserver.HttpServer;
+import java.util.stream.Stream;
 
 class Senda {
 
-    public static int checkOrg (String reg,String key) throws IOException {
+    public static String checkOrg (String reg, String key) throws IOException {
         List<String> list = new ArrayList<String>();
         list.add("reg");
         list.add("key");
         Stream stream = list.stream();
+        String a = JsonConvert.convertJson(stream);
 
         URL url = new URL("https://api-fns.ru/api/egr");    //Создаем объект URL с путем к странице
         URLConnection connection = url.openConnection();   //  Создаем двустороннее соединение  
 
 // получили поток для отправки данных
-//        OutputStream output = connection.getOutputStream();   //Получаем поток вывода
-//        output.write(Integer.parseInt(reg)); // отправляем данные               //Выводим в него данные
-//        output.write(Integer.parseInt(key)); // отправляем данные               //Выводим в него данные
+   //     OutputStream output = connection.getOutputStream();   //Получаем поток вывода
+   //     output.write(Integer.parseInt(a));
+  //      output.write(Integer.parseInt()); // отправляем данные               //Выводим в него данные
+  //      output.write(Integer.parseInt()); // отправляем данные               //Выводим в него данные
 
 // получили поток для чтения данных
-        InputStream input = connection.getInputStream();       //Получаем поток ввода
-        int data = input.read(); // читаем данные                // Читаем из него данные
+        InputStream input = connection.getInputStream();
+        String data = String.valueOf(input.read()); // читаем данные                // Читаем из него данные
+        String b = JsonConvert.convertString(data);
+
+
+
 
 //        int serverPort = 8000;
 //        HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
