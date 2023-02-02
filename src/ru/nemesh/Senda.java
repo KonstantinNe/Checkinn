@@ -1,7 +1,7 @@
 package ru.nemesh;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -10,15 +10,37 @@ import java.util.stream.Stream;
 
 class Senda {
 
-    public static String checkOrg (String reg, String key) throws IOException {
+    public static String checkOrg(String reg, String key) throws IOException {
         List<String> list = new ArrayList<String>();
         list.add("reg");
-        list.add("key");
+    //    list.add("key");
         Stream stream = list.stream();
-        String a = JsonConvert.convertJson(stream);
+//        String a = JsonConvert.convertJson(stream);
+        URL url = new URL("https://api-fns.ru/api/egr?req=8601033541&key=5ba4a553d3605f0f89a02b2e0cc0182300c8bab8");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod(String.valueOf("GET"));
+        URLConnection connection = url.openConnection();
+        connection.setDoOutput(true);
 
-        URL url = new URL("https://api-fns.ru/api/egr");    //Создаем объект URL с путем к странице
-        URLConnection connection = url.openConnection();   //  Создаем двустороннее соединение  
+        try (OutputStream output = connection.getOutputStream();
+             PrintStream sender = new PrintStream(output)) {
+            sender.println("reg");
+        }
+
+        try (InputStream input = connection.getInputStream();
+             BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
+            while (reader.ready()) {
+                System.out.println(reader.readLine());
+            }
+        }
+        return reg;
+    }
+}
+
+
+
+//        URL url = new URL("https://api-fns.ru/api/egr");    //Создаем объект URL с путем к странице
+//        URLConnection connection = url.openConnection();   //  Создаем двустороннее соединение
 
 // получили поток для отправки данных
    //     OutputStream output = connection.getOutputStream();   //Получаем поток вывода
@@ -27,9 +49,9 @@ class Senda {
   //      output.write(Integer.parseInt()); // отправляем данные               //Выводим в него данные
 
 // получили поток для чтения данных
-        InputStream input = connection.getInputStream();
-        String data = String.valueOf(input.read()); // читаем данные                // Читаем из него данные
-        String b = JsonConvert.convertString(data);
+//        InputStream input = connection.getInputStream();
+//        String data = String.valueOf(input.read()); // читаем данные                // Читаем из него данные
+//        String b = JsonConvert.convertString(data);
 
 
 
@@ -52,9 +74,8 @@ class Senda {
         /// поле 1  req *
         /// поле 2  key *
         //return serverPort;
-        return data;
-    }
-}
+//    }
+//}
 
 
 //    URL url = new URL("http://httpbin.org/post");

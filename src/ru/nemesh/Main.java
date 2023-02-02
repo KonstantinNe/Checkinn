@@ -10,7 +10,7 @@ public class Main {
         System.out.println("Введите ИНН");
         Scanner scanner = new Scanner(System.in);
         String input = null;   
-        String keyapi = "***00c8bab8";
+        String keyapi = "5ba4a553d3605f0f89a02b2e0cc0182300c8bab8";
         String result = null;
 
         JButton button = new JButton("Найти");

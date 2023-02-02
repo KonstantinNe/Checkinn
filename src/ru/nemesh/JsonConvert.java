@@ -12,8 +12,8 @@ public class JsonConvert {
         try {
             String json = mapper.writeValueAsString(stream);
             return json;
-            //          System.out.println("ResultingJSONstring = " + json);
-            //System.out.println(json);
+            //          System.out.println("ResultingJSONstring = " + json);    //
+            //System.out.println(json);                                         //
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -23,14 +23,14 @@ public class JsonConvert {
     public static String convertString(String jsonString) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
 
-//        try {
-//            Inn inn = new Inn("reg","key");
+//        try {                                                   //
+//            Inn inn = new Inn("reg","key");                     //
         String a = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonString);
-//            System.out.println(jsonString);
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
+//            System.out.println(jsonString);                      //
+//        }                                                         //
+//        catch (IOException e) {                                    //
+//            e.printStackTrace();                                   //
+//        }                                                          //
         return a;
     }
 }
