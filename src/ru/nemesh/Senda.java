@@ -10,32 +10,37 @@ import java.util.stream.Stream;
 
 class Senda {
 
-    public static String checkOrg(String reg, String key) throws IOException {
+    public static String checkOrg(String a, String b) throws IOException {
         List<String> list = new ArrayList<String>();
-        list.add("reg");
-    //    list.add("key");
+        list.add("a");
+        list.add("b");
         Stream stream = list.stream();
-//        String a = JsonConvert.convertJson(stream);
-        URL url = new URL("https://api-fns.ru/api/egr?req=8601033541&key=5ba4a553d3605f0f89a02b2e0cc0182300c8bab8");
+        String c = null;
+
+        URL url = new URL("https://api-fns.ru/api/egr?req=" + a + "&key=" + b);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod(String.valueOf("GET"));
+        con.setRequestMethod("GET");
         URLConnection connection = url.openConnection();
         connection.setDoOutput(true);
 
         try (OutputStream output = connection.getOutputStream();
              PrintStream sender = new PrintStream(output)) {
-            sender.println("reg");
+            sender.println(a);
         }
 
         try (InputStream input = connection.getInputStream();
              BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
             while (reader.ready()) {
-                System.out.println(reader.readLine());
+                //           System.out.println(reader.readLine());
+                c = String.valueOf(reader);
+                return c;
             }
         }
-        return reg;
+        return c;
     }
 }
+
+
 
 
 

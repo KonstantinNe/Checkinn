@@ -41,6 +41,6 @@ public class Main {
           //  continue;
         }
       result = String.valueOf((Senda.checkOrg(input,keyapi))); 
-        System.out.println("Информация по организации" + result);
+        System.out.println("Информация по организации:" + result);
     }
 }
