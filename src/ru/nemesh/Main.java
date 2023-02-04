@@ -40,7 +40,7 @@ public class Main {
             System.out.println(e.getMessage());
           //  continue;
         }
-      result = String.valueOf((Senda.checkOrg(input,keyapi))); 
+      result = Senda.checkOrg(input,keyapi);
         System.out.println("Информация по организации:" + result);
     }
 }

@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+.s3 { color: #808080; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>ru.nemesh;
+
+<span class="s0">import </span>javax.swing.*;
+<span class="s0">import </span>java.awt.event.ActionListener;
+<span class="s0">import </span>java.util.Scanner;
+
+<span class="s0">public class </span>Main {
+
+    <span class="s0">public static void </span>main(String[] args) <span class="s0">throws </span>Exception{
+        System.out.println(<span class="s2">&quot;Введите ИНН&quot;</span>);
+        Scanner scanner = <span class="s0">new </span>Scanner(System.in);
+        String input = <span class="s0">null</span>;   
+        String keyapi = <span class="s2">&quot;5ba4a553d3605f0f89a02b2e0cc0182300c8bab8&quot;</span>;
+        String result = <span class="s0">null</span>;
+
+        JButton button = <span class="s0">new </span>JButton(<span class="s2">&quot;Найти&quot;</span>);
+        ActionListener actionListener = <span class="s0">new </span>ToActionListener();
+        button.addActionListener(actionListener);
+        
+        input = scanner.nextLine();
+
+<span class="s3">//        try {</span>
+<span class="s3">//        input = String.valueOf(Check.getNum(input));</span>
+<span class="s3">////        } catch (NumException e) {</span>
+<span class="s3">////            System.out.println(e.getMessage());</span>
+<span class="s3">//        }</span>
+        
+        <span class="s0">try </span>{
+            input = Check.getProbel(input);
+
+        } <span class="s0">catch </span>(ProbelException e) {
+            System.out.println(e.getMessage());
+            <span class="s3">//   continue;</span>
+        }
+
+        String[] mas = input.split(<span class="s2">&quot;&quot;</span>);  <span class="s3">//  делим массив строку на части по символам для проверки количсетва введеных чисел (10) и наличия всех чисел, без симоволов</span>
+        <span class="s0">try </span>{
+            input = Check.getHownum(input);
+        } <span class="s0">catch </span>(NullnumException e) {
+            System.out.println(e.getMessage());
+          <span class="s3">//  continue;</span>
+        }
+      result = String.valueOf((Senda.checkOrg(input,keyapi))); 
+        System.out.println(<span class="s2">&quot;Информация по организации&quot; </span>+ result);
+    }
+}
+</pre>
+</body>
+</html>
