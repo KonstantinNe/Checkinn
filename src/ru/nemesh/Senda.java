@@ -32,7 +32,7 @@ class Senda {
              BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
             while (reader.ready()) {
                 //           System.out.println(reader.readLine());
-                c = String.valueOf(reader);
+                c = reader.readLine();
                 return c;
             }
         }
