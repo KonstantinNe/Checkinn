@@ -1,5 +1,9 @@
 package ru.nemesh;
 
+import ru.nemesh.exception.NegativeException;
+import ru.nemesh.exception.NullnumException;
+import ru.nemesh.exception.ProbelException;
+
 public class Check {
     public static int getNum(String input) throws Exception {
         boolean resultNumeric = Numeric(input);
@@ -8,7 +12,7 @@ public class Check {
             int b = Integer.parseInt(input);
             boolean c = NegativeNumber(Integer.parseInt(input));
             if (c == true) {
-                throw new NegativeException("Число должно быть положительным!!!");
+                throw new NegativeException("Число должно быть положительным!!!Введите ИНН из 10 чисел");
             } else
                 return Integer.parseInt(getChecknum(input));
 //        } else {
@@ -89,7 +93,7 @@ public class Check {
         if (space == false)
             return input;
         else
-            throw new ProbelException("Числа должны быть без пробела!");
+            throw new ProbelException("Числа должны быть без пробела!Введите ИНН из 10 чисел");
     }
 
     public static boolean containsWhiteSpace(String input) {

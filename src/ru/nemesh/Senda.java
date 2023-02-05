@@ -16,6 +16,7 @@ class Senda {
         list.add("b");
         Stream stream = list.stream();
         String c = null;
+        String result = null;
 
         URL url = new URL("https://api-fns.ru/api/egr?req=" + a + "&key=" + b);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -33,6 +34,7 @@ class Senda {
             while (reader.ready()) {
                 //           System.out.println(reader.readLine());
                 c = reader.readLine();
+            //  result = JsonConvert.convertJson(c);
                 return c;
             }
         }
