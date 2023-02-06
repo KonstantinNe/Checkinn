@@ -15,9 +15,6 @@ public class Check {
                 throw new NegativeException("Число должно быть положительным!!!Введите ИНН из 10 чисел");
             } else
                 return Integer.parseInt(getChecknum(input));
-//        } else {
-//            if (resultNumeric == (false)) ;
-//            return checkRom(a);
         }
         return 0;
     }

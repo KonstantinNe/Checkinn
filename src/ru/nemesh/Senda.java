@@ -1,6 +1,7 @@
 package ru.nemesh;
 
 import java.io.*;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -24,23 +25,47 @@ class Senda {
         URLConnection connection = url.openConnection();
         connection.setDoOutput(true);
 
-        try (OutputStream output = connection.getOutputStream();
-             PrintStream sender = new PrintStream(output)) {
+        try {
+            OutputStream output = connection.getOutputStream();
+            PrintStream sender = new PrintStream(output);
             sender.println(a);
+        } catch (ConnectException e) {
+            System.out.println(e.getMessage());
         }
 
-        try (InputStream input = connection.getInputStream();
-             BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
+        try {
+            InputStream input = connection.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             while (reader.ready()) {
-                //           System.out.println(reader.readLine());
                 c = reader.readLine();
-            //  result = JsonConvert.convertJson(c);
+                //  result = JsonConvert.convertJson(c);
                 return c;
             }
+        } catch (ConnectException e) {
+            System.out.println(e.getMessage());
         }
         return c;
     }
 }
+
+
+//        try (OutputStream output = connection.getOutputStream();
+//             PrintStream sender = new PrintStream(output)) {
+//            sender.println(a);
+//        }
+//
+//        try (InputStream input = connection.getInputStream();
+//             BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
+//            while (reader.ready()) {
+//                //           System.out.println(reader.readLine());
+//                c = reader.readLine();
+//            //  result = JsonConvert.convertJson(c);
+//                return c;
+//            }
+//        }
+//        return c;
+//    }
+//}
 
 
 

@@ -22,5 +22,6 @@ public class ResultInn {
 
     public class getНАИМПОЛНЮЛ {
     }
+    
 }
 
