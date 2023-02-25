@@ -1,19 +1,20 @@
 package ru.nemesh;
 
+import ru.nemesh.exception.NegativeException;
+import ru.nemesh.exception.NullnumException;
+import ru.nemesh.exception.ProbelException;
+
 public class Check {
     public static int getNum(String input) throws Exception {
         boolean resultNumeric = Numeric(input);
 
-        if (resultNumeric == (true)) {
-            int b = Integer.parseInt(input);
+        if (resultNumeric) {
+            Integer.parseInt(input);
             boolean c = NegativeNumber(Integer.parseInt(input));
-            if (c == true) {
-                throw new NegativeException("Число должно быть положительным!!!");
+            if (c) {
+                throw new NegativeException("Число должно быть положительным!!!Введите ИНН из 10 чисел");
             } else
                 return Integer.parseInt(getChecknum(input));
-//        } else {
-//            if (resultNumeric == (false)) ;
-//            return checkRom(a);
         }
         return 0;
     }
@@ -63,7 +64,7 @@ public class Check {
     public static String getHownum(String a) throws NullnumException {     //проверяем сколько чисел введено в строку
         boolean resultNum = HowmachMas(a);
 
-        if (resultNum == (true)) {
+        if (resultNum) {
             return a;
         } else {
             throw new NullnumException("Введите ИНН из 10 чисел");
@@ -89,7 +90,7 @@ public class Check {
         if (space == false)
             return input;
         else
-            throw new ProbelException("Числа должны быть без пробела!");
+            throw new ProbelException("Числа должны быть без пробела!Введите ИНН из 10 чисел");
     }
 
     public static boolean containsWhiteSpace(String input) {

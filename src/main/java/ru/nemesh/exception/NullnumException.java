@@ -1,4 +1,4 @@
-package ru.nemesh;
+package ru.nemesh.exception;
 
 public class NullnumException extends Exception {
 
